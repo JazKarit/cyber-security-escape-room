@@ -16,8 +16,8 @@ class Player(Sprite):
         self.orientation = 'left'
         
         # Start at the bottom center of the screen.
-        self.rect.centerx = 75
-        self.rect.bottom = 639
+        self.rect.centerx = self.screen_rect.width/4
+        self.rect.bottom = self.screen_rect.height/2
         
         # Store  a decimal value for the ship's center.
         self.centerx = float(self.rect.centerx)

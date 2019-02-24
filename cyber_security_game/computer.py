@@ -104,6 +104,8 @@ class Computer(Sprite):
                 pass
             else:
                 return "Caesar shift takes letters only"
+         if new_string == "venividivichi":
+             new_string = "Password from part 2: " + new_string
          return new_string
      
         

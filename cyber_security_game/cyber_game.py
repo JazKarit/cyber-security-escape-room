@@ -75,9 +75,9 @@ def run_game():
     room1.terminals[0].add_response('brute force',['Brute force can be helpful for finding simple password.',
                                                     'Computers can be helpful to speed this up',
                                                     'Common Bad Passwords: 123456, Password, qwerty, abc123'])
-    room1.terminals[0].add_response('the answer to the life the universe and everything',['42'])
-    room1.terminals[0].add_response('what is the answer to the life the universe and everything',['42'])
-    room1.terminals[0].add_response("Hichicker's guide to the Galaxy",['42'])
+    room1.terminals[0].add_response('the answer to the life the universe and everything',['Password from part 3: 42'])
+    room1.terminals[0].add_response('what is the answer to the life the universe and everything',['Password from part 3: 42'])
+    room1.terminals[0].add_response("Hichicker's guide to the Galaxy",['Password from part 3: 42'])
     room1.terminals[0].add_response('cat',['Linux command to read the given file'])
     room1.terminals[0].add_response('ls',['Linux command to list everything in the current folder'])
     room1.terminals[0].add_response('cd',['Linux command to chnage directory (you move into a new folder)'])
@@ -91,6 +91,7 @@ def run_game():
                                          'where the 1 represents 16 and A represents 1',
                                          "Type 'hex to dec <hex num>' in your terminal to convert a",
                                          'hexadecimal number to a base ten number'])
+    room1.terminals[0].add_response("Three Cups of Tea",['Password from part 4: is the number in the title']) 
     
     room1.add_terminal(640,624,102,120,'5902','Open the Safe.',True)
     room1.terminals[1].add_response('help',['Commands:','ls -> examines safe','cat <text name> -> reads the chosen text','','(Hint) people often choose password numbers from their interests'])
@@ -119,7 +120,7 @@ def run_game():
     
     
     room1.add_terminal(465,639,161,125,'','Get the right station in the Radio.',False)
-    room1.terminals[5].add_response('2019',['HackCU'])
+    room1.terminals[5].add_response('2019',['Password from part 1: HackCU'])
     
     
     room1.add_terminal(140,215,136,240,'','Just a carpet. Or is it?',False)
@@ -130,7 +131,7 @@ def run_game():
     room1.terminals[6].add_response('enter door',['Good job!','You found the back entrance, the one that is often','forgotten about. Remember, no matter how strong your',"encryption is, you're still suceptible to a personal password attack"])
     room1.terminals[6].add_response('open trapdoor',['Good job!','You found the back entrance, the one that is often','forgotten about. Remember, no matter how strong your',"encryption is, you're still suceptible to a personal password attack"])
 
-    room1.add_terminal(243,1,72,104,'HackCUvenividivichi423','Open the lock with the password you have obtained.',True)
+    room1.add_terminal(243,1,72,104,'HackCUvenividivichi423','Combine the 4 passwords to open the lock',True)
     room1.terminals[7].add_response('help',['Open the lock with the password you have obtained.'])
     room1.terminals[7].add_response('open door',['Good job','You escaped'])
     room1.terminals[7].add_response('open',['Good job','You escaped'])

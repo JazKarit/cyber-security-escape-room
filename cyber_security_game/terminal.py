@@ -21,9 +21,15 @@ class Terminal():
         self.last_shown = 0
         
         self.text = ''
-        txt_surface = self.font.render('>> ', True, self.text_color)
-        self.lines = [txt_surface]
         
+        txt_surface = self.font.render('You are a hacker who tried to hack into a government building.', True, self.text_color2)
+        self.lines = [txt_surface]
+        txt_surface = self.font.render('In the process you got locked inside the building. The objective', True, self.text_color2)
+        self.lines.append(txt_surface)
+        txt_surface = self.font.render('is to escape and get information. Start at the computer and type help.', True, self.text_color2)
+        self.lines.append(txt_surface)
+        txt_surface = self.font.render('>> ', True, self.text_color)
+        self.lines.append(txt_surface)
         # Prepare the initial score images.
         self.header_image = self.font.render(self.header, True, self.text_color, 
                                                         self.bg_color)
