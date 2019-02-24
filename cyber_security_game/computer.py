@@ -10,12 +10,8 @@ class Computer(Sprite):
         self.password = password
         self.responses = {}
         self.is_door = False
-        if terminal_name == 'desk':
+        if terminal_name == 'Get more info about Brute force and search the desk.':
             self.dir = 0
-        if terminal_name == 'door' or terminal_name == 'Door':
-            self.is_door = True
-        else:
-            self.is_door = False
         self.terminal_name = terminal_name
         
     def add_response(self,user_input,response):
@@ -37,7 +33,7 @@ class Computer(Sprite):
                 return [a]
             except:
                 return ["Command not understood"]
-        elif user_input == 'ls' and self.terminal_name == 'desk':
+        elif user_input == 'ls' and self.terminal_name == 'Get more info about Brute force and search the desk.':
             if self.dir == 0:
                 return['office passwords','python files','door password']
             elif self.dir == 1:
@@ -46,7 +42,7 @@ class Computer(Sprite):
                 return ["trapdoor.py"]
             elif self.dir == 3:
                 return ["part1.txt","part2.txt","part3.txt","part4.txt"]
-        elif user_input[0:2] == 'cd' and self.terminal_name == 'desk':
+        elif user_input[0:2] == 'cd' and self.terminal_name == 'Get more info about Brute force and search the desk.':
             if user_input[3:] == 'office passwords':
                 self.dir = 1
                 return ["Done","Secure agencies must change their passwords every three month..."]
@@ -61,7 +57,7 @@ class Computer(Sprite):
                 return ["Done"]
             else:
                 return ["Command not understood"]
-        elif user_input[0:3] == 'cat' and self.terminal_name == 'desk':
+        elif user_input[0:3] == 'cat' and self.terminal_name == 'Get more info about Brute force and search the desk.':
             if user_input[4:] == "july_pass.txt":
                 return ["summer 2018"]
             elif user_input[4:] == "october_pass.txt":
@@ -88,7 +84,7 @@ class Computer(Sprite):
             try:
                 return self.responses[user_input.lower()]
             except KeyError:
-                if self.terminal_name == 'radio':
+                if self.terminal_name == 'Get the right station in the Radio.':
                     return "Sshhhh"
                 else:
                     return ["Command not understood"]
@@ -100,7 +96,10 @@ class Computer(Sprite):
          rot = rot % 26
          for char in alpha:
             if char.isalpha():
-                new_string = new_string + chr(ord(char) + rot)
+                if ord(char) + rot > ord('z'):
+                    new_string = new_string + (chr(ord(char) + rot - 26))
+                else:
+                    new_string = new_string + (chr(ord(char) + rot))
             elif char == ' ':
                 pass
             else:

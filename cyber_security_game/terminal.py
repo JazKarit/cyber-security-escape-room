@@ -11,9 +11,9 @@ class Terminal():
         self.width, self.height = self.screen_rect.right/2, self.screen_rect.bottom
         
         # Font settings for scoring information.
-        self.header_color = (255, 255, 0)
+        self.header_color = (111, 206, 55)
         self.text_color = (255, 255, 255)
-        self.text_color2 = (0, 0, 255)
+        self.text_color2 = (244, 191, 66)
         self.bg_color = (0,0,0)
         self.font = pygame.font.SysFont(None, 30)
         self.line_height = 25
@@ -66,9 +66,9 @@ class Terminal():
         
     
     def draw(self):
-        self.header_image = self.font.render(self.header, True, self.text_color, 
+        self.header_image = self.font.render(self.header, True, self.header_color, 
                                                         self.bg_color)
-        self.header_image_rect = pygame.Rect(self.left_edge, 10, self.width, 10)
+        self.header_image_rect = pygame.Rect(self.left_edge, 0, self.width, 10)
         self.header_image_rect.left = self.left_edge
         self.screen.fill(self.bg_color, self.rect)
         self.screen.blit(self.header_image, self.header_image_rect)

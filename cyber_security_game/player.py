@@ -13,6 +13,7 @@ class Player(Sprite):
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
         self.settings = settings
+        self.orientation = 'left'
         
         # Start at the bottom center of the screen.
         self.rect.centerx = 75
@@ -45,8 +46,11 @@ class Player(Sprite):
         self.rect.centery = self.centery
         
     def blitme(self):
-        """Draw the ship at its current location."""
-        self.screen.blit(self.image, self.rect)
+        """Draw the player at its current location."""
+        if self.orientation == 'left':
+            self.screen.blit(self.image, self.rect)
+        elif self.orientation == 'right':
+            self.screen.blit(pygame.transform.flip(self.image, True, False), self.rect)
     
     def center(self):
        """Center player on the screen."""

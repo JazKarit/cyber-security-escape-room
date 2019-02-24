@@ -14,8 +14,10 @@ def check_events(player,terminal,state,room):
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RIGHT:
                 player.moving_right = True 
+                player.orientation = 'right'
             elif event.key == pygame.K_LEFT:
                 player.moving_left = True 
+                player.orientation = 'left'
             elif event.key == pygame.K_DOWN:
                 player.moving_down = True 
             elif event.key == pygame.K_UP:
@@ -23,7 +25,7 @@ def check_events(player,terminal,state,room):
             elif event.key == pygame.K_RETURN:
                 user_input = terminal.get_input()
                 if state == -1:
-                    terminal.next_line(["No terminal to recieve command"])
+                    terminal.next_line(["No terminal to recieve command."])
                 else:
                     output = room.terminals[state].get_response(user_input)
                     terminal.next_line(output)
@@ -66,8 +68,8 @@ def run_game():
     
     terminal = Terminal(settings,screen,'')
     room1 = Room(settings,screen)
-    room1.add_terminal(75,639,130,105,'','Computer',False)
-    room1.terminals[0].add_response('help',['Commands:','help','echo','safe code','Type in unfamiliar words or phrase to search them (ex. brute force)','Come back here whenever you are stuck'])
+    room1.add_terminal(75,639,130,105,'','You are at the Computer. Try to get the safe code from it.',False)
+    room1.terminals[0].add_response('help',['Commands:','help','echo','safe code','','Type in unfamiliar words or phrase to search them (ex. brute force)','Come back here whenever you are stuck'])
     room1.terminals[0].add_response('echo',['echo'])
     room1.terminals[0].add_response('safe code',['5902'])
     room1.terminals[0].add_response('brute force',['Brute force can be helpful for finding simple password.',
@@ -89,35 +91,47 @@ def run_game():
                                          'where the 1 represents 16 and A represents 1',
                                          "Type 'hex to dec <hex num>' in your terminal to convert a",
                                          'hexadecimal number to a base ten number'])
-    room1.add_terminal(640,624,102,120,'5902','safe',True)
-    room1.terminals[1].add_response('help',['ls: examines safe','cat ____: to read the target'])
+    
+    room1.add_terminal(640,624,102,120,'5902','Open the Safe.',True)
+    room1.terminals[1].add_response('help',['Commands:','ls -> examines safe','cat <text name> -> reads the chosen text','','(Hint) people often choose password numbers from their interests'])
     room1.terminals[1].add_response('ls',['You see two books, book1.txt and book2.txt'])
-    room1.terminals[1].add_response('cat book1.txt',["Hichicker's guide to the Galaxy","...the answer to the Life, the Universe, and Everything is...",
-                                        "Hmm... People often use numbers and words that mean something to them","in their passwords"])
+    room1.terminals[1].add_response('cat book1.txt',["Hichicker's guide to the Galaxy","...the answer to the Life, the Universe, and Everything is..."])
     room1.terminals[1].add_response('cat book2.txt',["Three Cups of Tea"])
      
-    room1.add_terminal(440,35,300,70,'Password','desk',True)
-    room1.terminals[2].add_response('help',['You can use the ls command to see where you are','and cd ______ to move through files','cd .. will move you up a folder'])
+     
+    room1.add_terminal(440,35,300,70,'Password','Get more info about Brute force and search the desk.',True)
+    room1.terminals[2].add_response('help',['You can use the ls command to see where you are','and cd <filename> to move through files','cd .. will move you up a folder'])
     
-    #room1.add_terminal(80,0,191,42,'c','door')
-    room1.add_terminal(623,510, 138,106,'','phone',False)
+    room1.add_terminal(623,510, 138,106,'','Phone. Dial the secret number.',False)
+    room1.terminals[3].add_response('help','Phone. Dial the secret number.')
     room1.terminals[3].add_response('9',['mvezmzuzmztyz'])
     room1.terminals[3].add_response('2078037452',['A trapdoor opens from beneath the rug'])
-    room1.add_terminal(8,165,124,338,'','sofa',False)
+    
+    
+    room1.add_terminal(8,165,124,338,'','You are at the Sofa. What do you want to do?',False)
+    room1.terminals[4].add_response('help',["You are at the Sofa. What do you want to do?"])
     room1.terminals[4].add_response('search',["You find a slip of paper with the following text: '7E3'"])
     room1.terminals[4].add_response('search sofa',["You find a slip of paper with the following text: '7E3'"])
     room1.terminals[4].add_response('look',["You find a slip of paper with the following text: '7E3'"])
     room1.terminals[4].add_response('ls',["You find a slip of paper with the following text: '7E3'"])
-    room1.add_terminal(465,639,161,125,'','radio',False)
-    room1.terminals[5].add_response('2019',['HackCu'])
-    room1.add_terminal(140,215,136,240,'','carpet',False)
+    room1.terminals[4].add_response('sleep',["You sleep for some time"])
+    room1.terminals[4].add_response('sit',["You sit for some time"])
+    
+    
+    room1.add_terminal(465,639,161,125,'','Get the right station in the Radio.',False)
+    room1.terminals[5].add_response('2019',['HackCU'])
+    
+    
+    room1.add_terminal(140,215,136,240,'','Just a carpet. Or is it?',False)
+    room1.terminals[6].add_response('help',['Just a carpet. Or is it?'])
     room1.terminals[6].add_response('roll',['A trapdoor is revealed underneath'])
     room1.terminals[6].add_response('enter',['Good job!','You found the back entrance, the one that is often','forgotten about. Remember, no matter how strong your',"encryption is, you're still suceptible to a personal password attack"])
     room1.terminals[6].add_response('enter trapdoor',['Good job!','You found the back entrance, the one that is often','forgotten about. Remember, no matter how strong your',"encryption is, you're still suceptible to a personal password attack"])
     room1.terminals[6].add_response('enter door',['Good job!','You found the back entrance, the one that is often','forgotten about. Remember, no matter how strong your',"encryption is, you're still suceptible to a personal password attack"])
     room1.terminals[6].add_response('open trapdoor',['Good job!','You found the back entrance, the one that is often','forgotten about. Remember, no matter how strong your',"encryption is, you're still suceptible to a personal password attack"])
 
-    room1.add_terminal(243,1,72,104,'HackCuvenividivichi423','lock',True)
+    room1.add_terminal(243,1,72,104,'HackCUvenividivichi423','Open the lock with the password you have obtained.',True)
+    room1.terminals[7].add_response('help',['Open the lock with the password you have obtained.'])
     room1.terminals[7].add_response('open door',['Good job','You escaped'])
     room1.terminals[7].add_response('open',['Good job','You escaped'])
     room1.terminals[7].add_response('enter door',['Good job','You escaped'])
@@ -140,7 +154,7 @@ def run_game():
         
         state = get_terminal_collision(player,room1)
         if state == -1:
-            terminal.update_header("No Signal")
+            terminal.update_header("No Signal.  Type help in any terminal to get more info.")
         else:
             terminal.update_header(room1.terminals[state].terminal_name)
 
